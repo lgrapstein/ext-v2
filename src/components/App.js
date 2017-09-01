@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import logo from '../lauren.png';
 import '../App.css';
+
 import SearchBar from './search_bar.js';
 import LinkList from './link_list.js';
 import LinkListItem from './link_list_item.js';

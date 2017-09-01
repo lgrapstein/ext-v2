@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { google, URL } from './google_searcher.js';
 
 export default class SearchBar extends Component {
   constructor(props) {
@@ -18,17 +19,19 @@ export default class SearchBar extends Component {
     this.setState({term: event.target.value });
   }
 
-  fetchResults(response) {
-    for (var i = 0; i < response.items.length; i++) {
-      var item = response.items[i];
-      document.getElementById("content").innerHTML += "<br>" + item.htmlTitle;
-    }
+  fetchResults(url) {
+    // for (var i = 0; i < response.items.length; i++) {
+    //   var item = response.items[i];
+    //   document.getElementById("content").innerHTML += "<br>" + item.htmlTitle;
+    google.search('url')
+    // }
   }
 
   onSearchSubmit(event) {
     event.preventDefault();
 
-    this.fetchResults(this.state.term);
+    this.fetchResults(url);
+    // this.fetchResults(this.state.term);
     this.setState({ term: '' });
   }
 
