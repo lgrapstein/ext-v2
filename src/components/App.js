@@ -12,16 +12,19 @@ export default class App extends Component {
 
     this.state = {
       links: [],
-      selectedLink: null
+      selectedLink: '',
+      term: ''
     };
 
     this.linkSearch('cats');
   }
 
-  linkSearch(term) {
+  linkSearch(term, links, selectedLink) {
     this.setState({
       links: links,
-      selectedLink: links[0]
+      selectedLink: selectedLink,
+      // selectedLink: links[],
+      term: term
     })
   }
 
@@ -32,8 +35,10 @@ export default class App extends Component {
         <img src={logo} className="App-logo" alt="logo" />
         <div className="App-header"><h2>Welcome to React</h2></div>
         <SearchBar onSearchChange={linkSearch} />
-        <LinkList />
         <LinkListItem link={this.state.selectedLink} />
+        <LinkList
+          onLinkSelect={selectedLink => this.setState({selectedLink})}
+          links={this.state.links} />
       </div>
     );
   }
