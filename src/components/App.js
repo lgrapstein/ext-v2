@@ -23,7 +23,7 @@ export default class App extends Component {
     this.setState({
       links: links,
       selectedLink: selectedLink,
-      // selectedLink: links[],
+      // selectedLink: links[0],
       term: term
     })
   }

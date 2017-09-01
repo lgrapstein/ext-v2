@@ -1,9 +1,9 @@
 import React from 'react';
 
 const LinkListItem = ({link, onLinkSelect}) => {
-  if (!link) {
-    return <div>Loading...</div>;
-  }
+  // if (!link) {
+  //   return <div>Loading...</div>;
+  // }
 
   const searchTerm = link.linkId;
   const url = `http://www.google.com/?q=${searchTerm}`;
