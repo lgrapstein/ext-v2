@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { google, URL } from './google_searcher.js';
+import { google, url } from './google_searcher.js';
 
 export default class SearchBar extends Component {
   constructor(props) {
