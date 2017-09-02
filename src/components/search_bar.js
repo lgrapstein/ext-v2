@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { google, url } from '../google_searcher.js';
+import { google, url, start, callback } from '../google_searcher.js';
 
 export default class SearchBar extends Component {
   constructor(props) {
@@ -20,11 +20,7 @@ export default class SearchBar extends Component {
   }
 
   fetchResults(url) {
-    // for (var i = 0; i < response.items.length; i++) {
-    //   var item = response.items[i];
-    //   document.getElementById("content").innerHTML += "<br>" + item.htmlTitle;
-    google.search('url')
-    // }
+    google(url, start, callback);
   }
 
   onSearchSubmit(event) {
