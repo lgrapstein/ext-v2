@@ -5,10 +5,12 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "lodash": "^4.17.4",
+    "querystring": "^0.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.12"
+    "react-scripts": "1.0.12",
+    "util": "^0.10.3"
   },
   "scripts": {
     "start": "react-scripts start",
