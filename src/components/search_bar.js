@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import { googleSearcher } from '../google_searcher.js';
+import GoogleScraper from 'google-scraper';
+
+const options = {
+  keyword: "javascript",
+  language: "en",
+  tld:"en",
+  results: 100
+};
+
+const scrape = new GoogleScraper(options);
 
 export default class SearchBar extends Component {
   constructor(props) {
@@ -12,24 +21,37 @@ export default class SearchBar extends Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
-    this.fetchResults = this.fetchResults.bind(this);
+    // this.fetchResults = this.fetchResults.bind(this);
   }
 
   onInputChange(event) {
     this.setState({term: event.target.value });
   }
 
-  fetchResults(googleSearcher) {
-    googleSearcher(query, start, callback);
-    // console.log(title)
-  }
+  // fetchResults() {
+  //   scrape.getGoogleLinks.then(function(value) {
+  //     console.log(value);
+  //   }).catch(function(e) {
+  //     console.log(e);
+  //   })
+  //   // googleSearcher(query, start, callback);
+  //   // console.log(title)
+  // }
 
   onSearchSubmit(event) {
-    event.preventDefault();
-
-    this.fetchResults(googleSearcher);
+    // event.preventDefault();
+    scrape.getGoogleLinks.then(function(value) {
+      console.log(value);
+    }).catch(function(event) {
+      console.log(event);
+    })
+    // this.fetchResults();
     // this.fetchResults(this.state.term);
     this.setState({ term: '' });
+  }
+
+  componentDidMount() {
+    this.onSearchSubmit();
   }
 
   render() {
@@ -42,7 +64,7 @@ export default class SearchBar extends Component {
         />
         <span className="input-group-btn">
           <button
-            onClick={this.fetchResults}
+            onClick={this.onSearchSubmit}
             type="submit"
             className="btn btn-secondary">
               Submit
