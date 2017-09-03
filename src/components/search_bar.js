@@ -20,8 +20,7 @@ export default class SearchBar extends Component {
   }
 
   fetchResults() {
-    googleSearcher(callback, request)
-    // google(url, start, callback);
+    googleSearcher(url, start, callback);
   }
 
   onSearchSubmit(event) {
