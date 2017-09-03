@@ -21,6 +21,7 @@ export default class SearchBar extends Component {
 
   fetchResults(googleSearcher) {
     googleSearcher(query, start, callback);
+    // console.log(title)
   }
 
   onSearchSubmit(event) {
