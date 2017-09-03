@@ -19,14 +19,14 @@ export default class SearchBar extends Component {
     this.setState({term: event.target.value });
   }
 
-  fetchResults() {
+  fetchResults(url) {
     googleSearcher(url, start, callback);
   }
 
   onSearchSubmit(event) {
     event.preventDefault();
 
-    this.fetchResults(googleSearcher);
+    this.fetchResults(url);
     // this.fetchResults(this.state.term);
     this.setState({ term: '' });
   }
