@@ -7,14 +7,14 @@ import { util } from 'util';
 // var querystring = require('querystring')
 // var util = require('util')
 
-export const googleSearcher = () => {
+const GoogleSearcher = (props) => {
   var linkSel = 'h3.r a'
   var descSel = 'div.s'
   var itemSel = 'div.g'
   var nextSel = 'td.b a span'
-//
+
   var URL = '%s://www.google.%s/search?hl=%s&q=%s&start=%s&sa=N&num=%s&ie=UTF-8&oe=UTF-8&gws_rd=ssl'
-//
+
   var nextTextErrorMsg = 'Translate `google.nextText` option to selected language to detect next results link.'
   var protocolErrorMsg = "Protocol `google.protocol` needs to be set to either 'http' or 'https', please use a valid protocol. Setting the protocol to 'https'."
 
@@ -103,3 +103,5 @@ export const googleSearcher = () => {
     })
   }
 }
+
+export default GoogleSearcher
