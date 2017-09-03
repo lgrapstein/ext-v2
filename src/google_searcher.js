@@ -7,7 +7,7 @@ import { util } from 'util';
 // var querystring = require('querystring')
 // var util = require('util')
 
-const GoogleSearcher = (props) => {
+export function googleSearcher(props) {
   var linkSel = 'h3.r a'
   var descSel = 'div.s'
   var itemSel = 'div.g'
@@ -103,5 +103,3 @@ const GoogleSearcher = (props) => {
     })
   }
 }
-
-export default GoogleSearcher

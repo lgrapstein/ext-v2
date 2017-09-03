@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GoogleSearcher from '../google_searcher.js';
+import { googleSearcher } from '../google_searcher.js';
 
 export default class SearchBar extends Component {
   constructor(props) {
@@ -19,14 +19,14 @@ export default class SearchBar extends Component {
     this.setState({term: event.target.value });
   }
 
-  fetchResults(GoogleSearcher) {
-    GoogleSearcher(query, start, callback);
+  fetchResults(googleSearcher) {
+    googleSearcher(query, start, callback);
   }
 
   onSearchSubmit(event) {
     event.preventDefault();
 
-    this.fetchResults(GoogleSearcher);
+    this.fetchResults(googleSearcher);
     // this.fetchResults(this.state.term);
     this.setState({ term: '' });
   }
