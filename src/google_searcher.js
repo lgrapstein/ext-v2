@@ -2,10 +2,6 @@ import { request } from 'request';
 import { cheerio } from 'cheerio';
 import { querystring } from 'querystring';
 import { util } from 'util';
-// var request = require('request')
-// var cheerio = require('cheerio')
-// var querystring = require('querystring')
-// var util = require('util')
 
 export function googleSearcher(props) {
   var linkSel = 'h3.r a'
