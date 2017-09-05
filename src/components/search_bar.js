@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import GoogleScraper from 'google-scraper';
-
 const options = {
   keyword: "",
   language: "en",
   tld:"com",
   results: 100
 };
-
 const scrape = new GoogleScraper(options);
 
 export default class SearchBar extends Component {
@@ -40,27 +38,21 @@ export default class SearchBar extends Component {
     });
   }
 
-  componentDidMount() {
-    this.onSearchSubmit();
-  }
-
   render() {
     return (
-      <form onSubmit={this.onSearchSubmit} className="input-group">
+      <div>
         <input
           className="form-control"
           value={this.state.term}
           onChange={this.onInputChange}
         />
-        <span className="input-group-btn">
-          <button
-            onClick={this.componentDidMount}
-            type="submit"
-            className="btn btn-secondary">
-              Submit
-          </button>
-        </span>
-      </form>
+        <button
+          onClick={this.onSearchSubmit}
+          type="submit"
+          className="btn btn-secondary">
+            Submit
+        </button>
+      </div>
     );
   }
 }
