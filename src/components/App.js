@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import logo from '../lauren.png';
+import logo from '../newtonx.png';
 import '../App.css';
-
 import SearchBar from './search_bar.js';
 import LinkList from './link_list.js';
 import LinkListItem from './link_list_item.js';
@@ -17,14 +16,13 @@ export default class App extends Component {
       term: ''
     };
 
-    this.linkSearch('cats');
+    this.linkSearch('');
   }
 
   linkSearch(term, links, selectedLink) {
     this.setState({
       links: links,
       selectedLink: selectedLink,
-      // selectedLink: links[0],
       term: term
     })
   }
@@ -34,11 +32,11 @@ export default class App extends Component {
     return (
       <div>
         <img src={logo} className="App-logo" alt="logo" />
-        <div className="App-header"><h2>Welcome to React</h2></div>
+        <div className="App-header"><h2>Google Article Scraper</h2></div>
         <SearchBar onSearchChange={linkSearch} />
         <LinkListItem link={this.state.selectedLink} />
         <LinkList
-          onLinkSelect={selectedLink => this.setState({selectedLink})}
+          onClick={selectedLink => this.setState({selectedLink})}
           links={this.state.links} />
       </div>
     );

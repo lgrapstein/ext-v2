@@ -5,8 +5,8 @@ const LinkList = (props, link) => {
   const linkItems = props.links.map((link) => {
     return (
       <LinkListItem
-        onLinkSelect={props.onLinkSelect}
-        key={link.etag}
+        onClick={props.onClick}
+        key={link}
         link={link} />
     );
   });
