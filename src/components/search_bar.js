@@ -11,13 +11,7 @@ export default class SearchBar extends Component {
 
     this.state = {
       term: '',
-      links: [],
-      options: {
-        keyword: keyword,
-        language: language,
-        tld: tld,
-        results: results
-      }
+      links: []
     };
 
     this.onInputChange = this.onInputChange.bind(this);
