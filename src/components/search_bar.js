@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import GoogleScraper from 'google-scraper';
+
 const options = {
   keyword: "",
   language: "en",
   tld:"com",
   results: 100
 };
+
 const scrape = new GoogleScraper(options);
 
 export default class SearchBar extends Component {
