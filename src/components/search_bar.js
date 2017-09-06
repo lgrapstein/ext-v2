@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import GoogleScraper from 'google-scraper';
 import * as config from '../urlSearch.js';
+import request from 'request';
 import cheerio from 'cheerio';
 
 export default class SearchBar extends Component {
   constructor(props) {
+
     super(props);
 
     this.state = {
       term: '',
-      links: []
+      links: [],
+      options: {
+        keyword: keyword,
+        language: language,
+        tld: tld,
+        results: results
+      }
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -33,32 +41,23 @@ export default class SearchBar extends Component {
   }
 
   onSearchSubmit(event) {
-    const option = {
-      url: config.urlSearch(this.options.tld, this.options.language, this.options.results, this.options.keyword),
-    }
-    return new Promise((resolve, reject) => {
-      request(option, (err, res, body) => {
-        if (err) {
-          return reject(err)
-        } else if (res.statusCode !== 200) {
-          const error = new Error(`Unexpected status code: ${res.statusCode}`)
-          error.res = res
-          return reject(error)
-        }
-        return resolve(body)
-      })
-    })
-    this.setState({
-      term: ''
-    });
     const options = {
-      keyword: this.state.term,
+      keyword: "{this.state.term}",
       language: "en",
-      tld:"com",
+      tld: "com",
       results: 100
     };
 
     const scrape = new GoogleScraper(options);
+
+    scrape.getGoogleLinks.then(function(value) {
+      console.log(value);
+    }).catch(function(event) {
+      console.log(event);
+    })
+    this.setState({
+      term: ''
+    });
   }
 
   extractLink(html) {
