@@ -6,7 +6,7 @@ const LinkListItem = ({ link }) => {
   const url = `http://www.google.com/?q=${searchTerm}&output=embed`;
 
   return (
-    <li onClick={() => (link)} className="list-group-item">
+    <li onClick={() => (link)} className="link">
       <iframe width="420" height="315" src={url} frameBorder="0" title={link.title} allowFullScreen></iframe>
     </li>
   );

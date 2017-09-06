@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import GoogleScraper from 'google-scraper';
-
-const options = {
-  keyword: "",
-  language: "en",
-  tld:"com",
-  results: 100
-};
-
-const scrape = new GoogleScraper(options);
+import * as config from '../urlSearch.js';
+import request from 'request';
+import cheerio from 'cheerio';
 
 export default class SearchBar extends Component {
   constructor(props) {
+
     super(props);
 
     this.state = {
@@ -29,7 +24,26 @@ export default class SearchBar extends Component {
     });
   }
 
+  getGoogleLinks() {
+    return new Promise((resolve, reject) => {
+      this.getHtml().then((body) => {
+        return resolve(this.extractLink(body))
+      }).catch((err) => {
+        return reject(err);
+      })
+    })
+  }
+
   onSearchSubmit(event) {
+    const options = {
+      keyword: "{this.state.term}",
+      language: "en",
+      tld: "com",
+      results: 100
+    };
+
+    const scrape = new GoogleScraper(options);
+
     scrape.getGoogleLinks.then(function(value) {
       console.log(value);
     }).catch(function(event) {
@@ -40,27 +54,33 @@ export default class SearchBar extends Component {
     });
   }
 
-  componentDidMount() {
-    this.onSearchSubmit();
+  extractLink(html) {
+    const $ = cheerio.load(html);
+    const linkArray = [];
+    $(config.selectorSearch).each((i, link) => {
+      const fixLink = $(link).attr('href').match('(?=http|https).*(?=&sa)')
+      if (fixLink) {
+        linkArray.push(fixLink[0]);
+      }
+    })
+    return linkArray;
   }
 
   render() {
     return (
-      <form onSubmit={this.onSearchSubmit} className="input-group">
+      <div>
         <input
           className="form-control"
           value={this.state.term}
           onChange={this.onInputChange}
         />
-        <span className="input-group-btn">
-          <button
-            onClick={this.componentDidMount}
-            type="submit"
-            className="btn btn-secondary">
-              Submit
-          </button>
-        </span>
-      </form>
+        <button
+          onClick={this.onSearchSubmit}
+          type="submit"
+          className="btn btn-secondary">
+            Submit
+        </button>
+      </div>
     );
   }
 }
