@@ -1,13 +1,14 @@
 import React from 'react';
 import LinkListItem from './link_list_item.js';
 
-const LinkList = (props, link) => {
+
+const LinkList = (props, value) => {
   const linkItems = props.links.map((link) => {
     return (
       <LinkListItem
         onClick={props.onClick}
-        key={link}
-        link={link} />
+        key={this.state.value}
+        link={this.state.value} />
     );
   });
 
