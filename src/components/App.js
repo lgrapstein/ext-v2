@@ -13,17 +13,19 @@ export default class App extends Component {
     this.state = {
       links: [],
       selectedLink: '',
-      term: ''
+      term: '',
+      value: ''
     };
 
     this.linkSearch('');
   }
 
-  linkSearch(term, links, selectedLink) {
+  linkSearch(term, links, selectedLink, value) {
     this.setState({
       links: links,
       selectedLink: selectedLink,
-      term: term
+      term: term,
+      value: value
     })
   }
 
@@ -37,7 +39,7 @@ export default class App extends Component {
         <LinkListItem link={this.state.selectedLink} />
         <LinkList
           onClick={selectedLink => this.setState({selectedLink})}
-          links={this.state.links} />
+          links={this.state.value} />
       </div>
     );
   }
